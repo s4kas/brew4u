@@ -2,14 +2,18 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
 	xsi:schemaLocation="
 		http://www.springframework.org/schema/beans 
 		http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context
-		http://www.springframework.org/schema/context/spring-context.xsd">
+		http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/util 
+		http://www.springframework.org/schema/util/spring-util.xsd">
 
 	<context:component-scan base-package="com.bmp.xanga" />
 
+	<!-- i18n -->
     <bean id="messageSource"
             class="org.springframework.context.support.ResourceBundleMessageSource">
         <property name="basenames">
@@ -22,7 +26,7 @@
     <!-- pass the temperature from the service to the dispatcher -->
     <bean id="tempService" class="com.bmp.xanga.temperature.service.TemperatureService"/>
 	<bean id="tempDispatcher" class="com.bmp.xanga.temperature.service.TemperatureDispatcher" />
-	<bean id="addObserver" class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+	<bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
     	<property name="targetObject" ref="tempService" />
     	<property name="targetMethod" value="addObserver"/>
     	<property name="arguments">
@@ -35,7 +39,7 @@
 	<!-- pass the temperature from the dispatcher to the various temp models -->
 	<bean id="tempOneModel" class="com.bmp.xanga.temperature.service.TemperatureModel" />
 	<bean id="tempTwoModel" class="com.bmp.xanga.temperature.service.TemperatureModel" />
-	<bean id="addTempOneObs" class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+	<bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
     	<property name="targetObject" ref="tempDispatcher" />
     	<property name="targetMethod" value="addTempOneObs"/>
     	<property name="arguments">
@@ -44,7 +48,7 @@
        		</list>
     	</property>
 	</bean>
-	<bean id="addTempTwoObs" class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+	<bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
     	<property name="targetObject" ref="tempDispatcher" />
     	<property name="targetMethod" value="addTempTwoObs"/>
     	<property name="arguments">
@@ -53,5 +57,25 @@
        		</list>
     	</property>
 	</bean>
+	
+	<!-- create the UI -->
+	<bean id="leftTempPanel" class="com.bmp.xanga.temperature.views.ArcTemperature">
+		<constructor-arg><value>20</value></constructor-arg>
+		<constructor-arg><util:constant static-field="com.bmp.xanga.arc.AbstractArc.GREEN1"/></constructor-arg>
+		<constructor-arg><util:constant static-field="com.bmp.xanga.arc.AbstractArc.GREEN2"/></constructor-arg>
+		<constructor-arg><value>200</value></constructor-arg>
+		<property name="temperatureModel" ref="tempOneModel"/>
+	</bean>
+	<bean id="rightTempPanel" class="com.bmp.xanga.temperature.views.ArcTemperature">
+		<constructor-arg><value>20</value></constructor-arg>
+		<constructor-arg><util:constant static-field="com.bmp.xanga.arc.AbstractArc.BLUE1"/></constructor-arg>
+		<constructor-arg><util:constant static-field="com.bmp.xanga.arc.AbstractArc.BLUE2"/></constructor-arg>
+		<constructor-arg><value>200</value></constructor-arg>
+		<property name="temperatureModel" ref="tempTwoModel"/>
+	</bean>
+	<bean id="mainApp" class="com.bmp.xanga.MainApp">
+		<property name="leftTemp" ref="leftTempPanel"/>
+		<property name="rightTemp" ref="rightTempPanel"/>
+	</bean>	
 	
 </beans>

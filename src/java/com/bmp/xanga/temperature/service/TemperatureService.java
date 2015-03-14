@@ -68,7 +68,7 @@ public class TemperatureService extends Observable implements SerialPortEventLis
         }
 	}
 	
-	public List<String> getPorts() {
+	public static List<String> getPorts() {
 		List<String> ports = new ArrayList<String>();
 		Enumeration<CommPortIdentifier> enumer = CommPortIdentifier.getPortIdentifiers();
 		while (enumer.hasMoreElements()) {

@@ -13,4 +13,8 @@ public class TemperatureModel implements Observer {
 			this.temp = (String) arg;
 		}
 	}
+	
+	public String getTemp() {
+		return this.temp;
+	}
 }

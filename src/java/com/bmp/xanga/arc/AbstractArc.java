@@ -1,16 +1,16 @@
 package com.bmp.xanga.arc;
 
 import java.util.Random;
-
 import javafx.scene.paint.Color;
 
 public abstract class AbstractArc implements IArc {
 
 	public static Color BLUE1 = Color.rgb(126, 166, 212, 0.6);
     public static Color BLUE2 = Color.rgb(126, 166, 222, 0.5);
-    public static Color BLUE3 = Color.rgb(130, 166, 230, 0.5);
-    public static Color GREEN1 = Color.rgb(130, 230, 166, 0.5);
-    public static Color RED1 = Color.rgb(230, 130, 166, 0.5);
+    public static Color GREEN1 = Color.rgb(130, 230, 166, 0.6);
+    public static Color GREEN2 = Color.rgb(130, 230, 176, 0.5);
+    public static Color RED1 = Color.rgb(230, 130, 166, 0.6);
+    public static Color RED2 = Color.rgb(230, 130, 176, 0.5);
 	
 	public ArcPiece[] createRandomArcs(int num, Color color, double radius) {
         final ArcPiece[] manyPieces = new ArcPiece[num];
@@ -52,6 +52,5 @@ public abstract class AbstractArc implements IArc {
         Random rand = new Random();
         int range = max - min + 1;
         return rand.nextInt(range) + min;
-    }
-    
+    }    
 }
