@@ -2,7 +2,11 @@ package com.bmp.xanga;
 
 import java.io.IOException;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import com.bmp.xanga.arc.IArc;
+import com.bmp.xanga.temperature.views.PortSelection;
 
 import javafx.animation.AnimationTimer;
 import javafx.event.ActionEvent;
@@ -17,6 +21,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
+@Component
 public class MainApp {
 
 	private Stage primaryStage;
@@ -24,14 +29,12 @@ public class MainApp {
     private Canvas canvasTempLeft;
     private Canvas canvasTempRight;
     
+    @Autowired
     private IArc leftTemp;
-    public void setLeftTemp(IArc leftTemp) {
-    	this.leftTemp = leftTemp;
-    }
+    @Autowired
    	private IArc rightTemp;
-   	public void setRightTemp(IArc rightTemp) {
-   		this.rightTemp = rightTemp;
-    }
+    @Autowired
+   	private PortSelection portSelection;
    	
    	private static final String OP_SEL_RECIPE = "openRecipe";
    	private static final String OP_SEL_TERM = "selectTerm";
@@ -84,7 +87,7 @@ public class MainApp {
 					menuItem.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent ev) {
-							System.out.println("selTerm");
+							String result = portSelection.showAndGetResponse();
 						}
 					});
 				}

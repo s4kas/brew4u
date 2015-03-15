@@ -18,10 +18,10 @@
             class="org.springframework.context.support.ResourceBundleMessageSource">
         <property name="basenames">
             <list>
-                <value>classpath:messages</value>
+                <value>classpath:messages_pt.properties</value>
             </list>
         </property>
-    </bean>
+    </bean>    
     
     <!-- pass the temperature from the service to the dispatcher -->
     <bean id="tempService" class="com.bmp.xanga.temperature.service.TemperatureService"/>
@@ -59,23 +59,19 @@
 	</bean>
 	
 	<!-- create the UI -->
-	<bean id="leftTempPanel" class="com.bmp.xanga.temperature.views.ArcTemperature">
+	<bean id="leftTemp" class="com.bmp.xanga.temperature.views.ArcTemperature">
 		<constructor-arg><value>20</value></constructor-arg>
 		<constructor-arg><util:constant static-field="com.bmp.xanga.arc.AbstractArc.GREEN1"/></constructor-arg>
 		<constructor-arg><util:constant static-field="com.bmp.xanga.arc.AbstractArc.GREEN2"/></constructor-arg>
 		<constructor-arg><value>200</value></constructor-arg>
 		<property name="temperatureModel" ref="tempOneModel"/>
 	</bean>
-	<bean id="rightTempPanel" class="com.bmp.xanga.temperature.views.ArcTemperature">
+	<bean id="rightTemp" class="com.bmp.xanga.temperature.views.ArcTemperature">
 		<constructor-arg><value>20</value></constructor-arg>
 		<constructor-arg><util:constant static-field="com.bmp.xanga.arc.AbstractArc.BLUE1"/></constructor-arg>
 		<constructor-arg><util:constant static-field="com.bmp.xanga.arc.AbstractArc.BLUE2"/></constructor-arg>
 		<constructor-arg><value>200</value></constructor-arg>
 		<property name="temperatureModel" ref="tempTwoModel"/>
 	</bean>
-	<bean id="mainApp" class="com.bmp.xanga.MainApp">
-		<property name="leftTemp" ref="leftTempPanel"/>
-		<property name="rightTemp" ref="rightTempPanel"/>
-	</bean>	
 	
 </beans>
