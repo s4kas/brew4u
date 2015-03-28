@@ -1,6 +1,7 @@
 package com.bmp.xanga.arc;
 
 import java.util.Random;
+
 import javafx.scene.paint.Color;
 
 public abstract class AbstractArc implements IArc {
@@ -22,7 +23,7 @@ public abstract class AbstractArc implements IArc {
     
     public ArcPiece randomArcPiece(Color color, double radius) {
  
-        int width =  randomIntRange(60, (int) radius * 2);
+        int width =  randomIntRange(150, (int) radius * 2);
         int randomStrokeWidth = randomIntRange(1,10);
         int randomStartAngle = randomIntRange(1, 270);
         int randomExtentAngle = randomIntRange(10, 360-randomStartAngle);
@@ -52,5 +53,5 @@ public abstract class AbstractArc implements IArc {
         Random rand = new Random();
         int range = max - min + 1;
         return rand.nextInt(range) + min;
-    }    
+    }
 }

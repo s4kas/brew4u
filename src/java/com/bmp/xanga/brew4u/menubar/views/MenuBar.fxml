@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+
+<MenuBar xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bmp.xanga.brew4u.menubar.MenuBarController">
+  <menus>
+    <Menu fx:id="file" mnemonicParsing="false" text="%MenuBar.file">
+      <items>
+        <MenuItem fx:id="openRecipe" mnemonicParsing="false" onAction="#handleOpenRecipe" text="%MenuBar.openRecipe" />
+            <MenuItem fx:id="close" mnemonicParsing="false" onAction="#handleClose" text="%MenuBar.close" />
+      </items>
+    </Menu>
+    <Menu fx:id="options" mnemonicParsing="false" text="%MenuBar.options">
+      <items>
+        <MenuItem fx:id="selectTerm" mnemonicParsing="false" onAction="#handleSelectTerm" text="%MenuBar.selectTerm" />
+      </items>
+    </Menu>
+    <Menu fx:id="help" mnemonicParsing="false" text="%MenuBar.help">
+      <items>
+        <MenuItem fx:id="about" mnemonicParsing="false" onAction="#handleAbout" text="%MenuBar.about" />
+      </items>
+    </Menu>
+  </menus>
+</MenuBar>
