@@ -101,14 +101,15 @@ public class Teste extends Application {
 		Timeline timeline = new Timeline();
 		timeline.setCycleCount(Timeline.INDEFINITE);
 		timeline.getKeyFrames().add(
-				new KeyFrame(Duration.seconds(1), 
-						new EventHandler() {
-							@Override
-							public void handle(Event arg0) {
-								text.setText(sdf.format(Calendar.getInstance().getTime()));
-							}
-						})
-				);
+			new KeyFrame(Duration.seconds(1), 
+				new EventHandler<ActionEvent>() {
+					@Override
+					public void handle(ActionEvent event) {
+						text.setText(sdf.format(Calendar.getInstance().getTime()));
+					}
+				}
+			)
+		);
 		timeline.playFromStart();
 		
 	}

@@ -1,0 +1,9 @@
+.tab-pane .tab-header-area .tab-header-background {
+	-fx-background-color: #000000; 
+    -fx-opacity: 0;
+}
+
+.tab-pane {
+    -fx-border-color: #a3a7a8;
+    -fx-border-radius: 5 5 0 0;
+}

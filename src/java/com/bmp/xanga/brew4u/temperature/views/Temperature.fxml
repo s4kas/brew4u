@@ -4,4 +4,4 @@
 <?import javafx.scene.layout.*?>
 
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="250.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bmp.xanga.brew4u.temperature.TemperatureController" />
+<Pane maxHeight="270.0" maxWidth="270.0" minHeight="270.0" minWidth="270.0" prefHeight="270.0" prefWidth="270.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bmp.xanga.brew4u.temperature.TemperatureController" />

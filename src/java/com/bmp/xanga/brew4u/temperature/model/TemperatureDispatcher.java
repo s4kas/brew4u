@@ -13,6 +13,7 @@ public class TemperatureDispatcher implements Observer {
 	private List<Observer> tempTwoObs = new ArrayList<Observer>();
 	private List<Observer> errorObs = new ArrayList<Observer>();
 	private Observer mainObserver;
+	private boolean firstTime = true;
 	
 	public void addTempOneObs(Observer e) {
 		this.tempOneObs.add(e);
@@ -42,15 +43,21 @@ public class TemperatureDispatcher implements Observer {
 				alertObservers(o, tempTwoObs, temp2);
 				
 				//alert the main observer with open Temperature
-				mainObserver.update(o, DispatcherEvent.OPEN_LEFT_TEMP);
-				mainObserver.update(o, DispatcherEvent.OPEN_RIGHT_TEMP);
+				if (firstTime) {
+					mainObserver.update(o, DispatcherEvent.OPEN_LEFT_TEMP);
+					mainObserver.update(o, DispatcherEvent.OPEN_RIGHT_TEMP);
+					firstTime = false;
+				}
 				
 			} else if (tempList.getTemperatures().size() == 1) {
 				String temp1 = tempList.getTemperatures().get(0).getTemp();
 				alertObservers(o, tempOneObs, temp1);
 				
 				//alert the main observer with open Temperature
-				mainObserver.update(o, DispatcherEvent.OPEN_LEFT_TEMP);
+				if (firstTime) {
+					mainObserver.update(o, DispatcherEvent.OPEN_LEFT_TEMP);
+					firstTime = false;
+				}
 			}
 			
 		} else if (arg instanceof Exception) { //error
