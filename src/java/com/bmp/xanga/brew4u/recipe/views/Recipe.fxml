@@ -5,7 +5,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1200.0" stylesheets="@Recipe.css" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bmp.xanga.brew4u.recipe.RecipeController">
+<TabPane maxHeight="430.0" maxWidth="1200.0" minHeight="430.0" minWidth="1200.0" prefHeight="430.0" prefWidth="1200.0" stylesheets="@Recipe.css" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bmp.xanga.brew4u.recipe.RecipeController">
   <tabs>
     <Tab text="Resumo">
          <content>

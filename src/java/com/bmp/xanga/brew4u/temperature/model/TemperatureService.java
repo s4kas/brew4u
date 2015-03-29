@@ -55,6 +55,15 @@ public class TemperatureService extends Observable implements SerialPortEventLis
         	// add event listeners
         	serialPort.addEventListener(this);
         	serialPort.notifyOnDataAvailable(true);
+        	
+//TODO BM
+TemperatureList tempList = new TemperatureList();
+tempList.setTemperatures(new ArrayList<Temperature>());
+tempList.getTemperatures().add(new Temperature());
+tempList.getTemperatures().add(new Temperature());
+alertObservers(tempList);
+//TODO BM
+        	
         } catch (Exception e) {
         	alertObservers(e);
         }
@@ -91,7 +100,7 @@ public class TemperatureService extends Observable implements SerialPortEventLis
 				TemperatureList temp = mapper.readValue(inputLine,TemperatureList.class);
 				alertObservers(temp);
 			} catch (Exception e) {
-				alertObservers(e.toString());
+				alertObservers(e);
 			}
 		}
 		
